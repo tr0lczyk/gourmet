@@ -79,8 +79,19 @@ dependencies {
   kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
   kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
 
+  //Retrofit with Moshi Converter
+  implementation "com.squareup.retrofit2:retrofit:2.9.0"
+  implementation "com.squareup.retrofit2:converter-moshi:2.6.2"
+
   // Moshi
   implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
+  implementation "com.squareup.moshi:moshi-kotlin:1.12.0"
+
+  // Interceptor
+  implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+
+  //Timber
+  implementation "com.jakewharton.timber:timber:4.7.1"
 }
 
 kapt {

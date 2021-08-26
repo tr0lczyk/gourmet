@@ -15,13 +15,13 @@ import kotlin.annotation.AnnotationRetention.RUNTIME
 
 @Module
 @InstallIn(SingletonComponent::class)
-class AppModule {
+class DatabaseModule {
 
   @Provides
   @Singleton
   fun provideDatabase(
     app: Application
-  ) = Room.databaseBuilder(app, MealDatabase::class.java, "tasks_database")
+  ) = Room.databaseBuilder(app, MealDatabase::class.java, "meal_database")
     .fallbackToDestructiveMigration()
     .build()
 
