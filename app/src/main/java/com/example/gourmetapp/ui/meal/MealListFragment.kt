@@ -2,9 +2,11 @@ package com.example.gourmetapp.ui.meal
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.gourmetapp.R
+import com.example.gourmetapp.data.Meal
 import com.example.gourmetapp.databinding.FragmentMealListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,6 +17,13 @@ class MealListFragment : Fragment() {
 
     private lateinit var _binding: FragmentMealListBinding
     private val binding: FragmentMealListBinding get() = _binding
+
+    private val callback : MealAdapter.Callback = object: MealAdapter.Callback{
+        override fun clickedMeal(meal: Meal) {
+            Toast.makeText(requireContext(),meal.title,Toast.LENGTH_SHORT).show()
+        }
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +39,7 @@ class MealListFragment : Fragment() {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = MealAdapter()
+        val adapter = MealAdapter(callback)
         binding.mealRecycler.apply {
             this.adapter = adapter
             setHasFixedSize(true)

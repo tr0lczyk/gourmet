@@ -10,20 +10,40 @@ import com.example.gourmetapp.R
 import com.example.gourmetapp.data.Meal
 import com.example.gourmetapp.databinding.ItemMealListBinding
 
-class MealAdapter : ListAdapter<Meal, MealAdapter.MealViewHolder>(MealDiffCallback()) {
+class MealAdapter(private val callback: Callback) : ListAdapter<Meal, MealAdapter.MealViewHolder>(MealDiffCallback()) {
+
+    interface Callback {
+        fun clickedMeal(meal: Meal)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
         val binding = ItemMealListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MealViewHolder(binding)
+        return MealViewHolder(binding,mealViewHolderListener)
     }
 
     override fun onBindViewHolder(holder: MealViewHolder, position: Int) {
         holder.bindTo(getItem(position))
     }
 
-    class MealViewHolder(private val binding: ItemMealListBinding) : RecyclerView.ViewHolder(binding.root) {
+    private val mealViewHolderListener : MealViewHolder.MealViewHolderListener
+    get() = object :MealViewHolder.MealViewHolderListener{
+        override fun clickedMeal(meal: Meal) {
+            callback.clickedMeal(meal)
+        }
+
+    }
+
+    class MealViewHolder(private val binding: ItemMealListBinding,private val listener: MealViewHolderListener) : RecyclerView.ViewHolder(binding.root) {
+
+        private lateinit var currentMeal: Meal
+
+        interface MealViewHolderListener{
+            fun clickedMeal(meal: Meal)
+        }
 
         fun bindTo(meal: Meal) {
+            currentMeal = meal
+            binding.parentView.setOnClickListener { onClick() }
             binding.mealDate.text = meal.getModificationDateFormatted()
             binding.mealTitle.text = meal.title
             binding.mealDescription.text = meal.descriptionOnly
@@ -32,6 +52,10 @@ class MealAdapter : ListAdapter<Meal, MealAdapter.MealViewHolder>(MealDiffCallba
                     .centerCrop()
                     .placeholder(R.drawable.ic_launcher_foreground)
                     .into(binding.mealImage)
+        }
+
+        private fun onClick() {
+            listener.clickedMeal(currentMeal)
         }
     }
 

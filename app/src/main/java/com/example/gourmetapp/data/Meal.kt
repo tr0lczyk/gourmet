@@ -30,5 +30,7 @@ data class Meal(
         return targetFormat.format(newDate!!)
     }
 
+    val descriptionUrl:String get() = "http${description.split("http").last()}"
+
     val descriptionOnly: String get() = description.split("http").first()
 }
