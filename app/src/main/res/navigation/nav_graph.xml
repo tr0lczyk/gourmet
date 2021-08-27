@@ -5,9 +5,22 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/mealListFragment">
 
-  <fragment
-      android:id="@+id/mealListFragment"
-      android:name="com.example.gourmetapp.ui.meal.MealListFragment"
-      android:label="fragment_tasks"
-      tools:layout="@layout/fragment_meal_list" />
+    <fragment
+        android:id="@+id/mealListFragment"
+        android:name="com.example.gourmetapp.ui.meal.MealListFragment"
+        android:label="fragment_tasks"
+        tools:layout="@layout/fragment_meal_list">
+        <action
+            android:id="@+id/action_mealListFragment_to_mealDetailFragment"
+            app:destination="@id/mealDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mealDetailFragment"
+        android:name="com.example.gourmetapp.ui.meal.MealDetailFragment"
+        android:label="MealDetailFragment">
+        <argument
+            android:name="mealDetail"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
 </navigation>

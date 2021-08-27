@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.gourmetapp.R
 import com.example.gourmetapp.data.Meal
 import com.example.gourmetapp.databinding.FragmentMealListBinding
@@ -20,9 +21,8 @@ class MealListFragment : Fragment() {
 
     private val callback : MealAdapter.Callback = object: MealAdapter.Callback{
         override fun clickedMeal(meal: Meal) {
-            Toast.makeText(requireContext(),meal.title,Toast.LENGTH_SHORT).show()
+            findNavController().navigate(MealListFragmentDirections.actionMealListFragmentToMealDetailFragment(meal.descriptionUrl))
         }
-
     }
 
     override fun onCreateView(
