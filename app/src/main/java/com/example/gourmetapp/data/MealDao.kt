@@ -25,4 +25,7 @@ interface MealDao {
 
   @Query("SELECT * FROM meal_table ORDER BY orderId ASC")
   fun getAscendingMeals(): Flow<List<Meal>>
+
+  @Query("DELETE FROM meal_table")
+  fun nukeMeals()
 }

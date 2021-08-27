@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 import javax.inject.Inject
 
-class GourmetAppRepository @Inject constructor(
+class MealRepository @Inject constructor(
   private val networkRepository: NetworkRepository,
   private val database: MealDatabase
 ) {
@@ -24,5 +24,9 @@ class GourmetAppRepository @Inject constructor(
 
   fun getMealList(): Flow<List<Meal>>{
     return database.mealDao().getAscendingMeals()
+  }
+
+  fun deleteALlMeals(){
+    database.mealDao().nukeMeals()
   }
 }

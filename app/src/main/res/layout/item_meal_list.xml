@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/double_base_padding">
+
+    <TextView
+        android:id="@+id/meal_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:textSize="18sp"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/meal_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        tools:text="12-03-21" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/double_base_padding"
+        android:orientation="vertical"
+        app:constraint_referenced_ids="meal_title,meal_date"
+        app:flow_horizontalAlign="start"
+        app:layout_constraintBottom_toBottomOf="@id/meal_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/meal_image"
+        app:layout_constraintTop_toTopOf="@id/meal_image" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/meal_image"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/meal_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_marginTop="@dimen/double_base_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/meal_image"
+        tools:text="@string/Lorem" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
