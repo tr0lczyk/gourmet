@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/double_base_padding"
-    android:id="@+id/parent_view">
+    android:id="@+id/parent_view"
+    android:background="?attr/selectableItemBackground">
 
     <TextView
         android:id="@+id/meal_title"

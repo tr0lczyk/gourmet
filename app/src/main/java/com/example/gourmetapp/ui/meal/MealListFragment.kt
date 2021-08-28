@@ -39,13 +39,13 @@ class MealListFragment : Fragment() {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = MealAdapter(callback)
+        val mealAdapter = MealAdapter(callback)
         binding.mealRecycler.apply {
-            this.adapter = adapter
+            adapter = mealAdapter
             setHasFixedSize(true)
         }
         viewModel.meals.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+            mealAdapter.submitList(it)
         }
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.refreshMealList()
