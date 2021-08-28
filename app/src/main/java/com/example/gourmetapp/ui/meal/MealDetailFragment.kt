@@ -49,7 +49,6 @@ class MealDetailFragment : Fragment() {
             }
 
             webChromeClient = object : WebChromeClient() {
-
                 override fun onReceivedTitle(view: WebView?, title: String?) {
                     requireActivity().window.setTitle(title)
                 }
