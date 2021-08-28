@@ -99,6 +99,9 @@ dependencies {
 
   //SwpieRefresh
   implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+  // Fragment
+  implementation("androidx.fragment:fragment-ktx:$fragment_version")
 }
 
 kapt {
