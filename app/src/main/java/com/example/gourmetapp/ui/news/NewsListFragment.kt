@@ -1,4 +1,4 @@
-package com.example.gourmetapp.ui.meal
+package com.example.gourmetapp.ui.news
 
 import android.os.Bundle
 import android.view.*
@@ -9,25 +9,25 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.gourmetapp.R
-import com.example.gourmetapp.data.Meal
-import com.example.gourmetapp.databinding.FragmentMealListBinding
-import com.example.gourmetapp.ui.meal.MealDetailViewModel.Companion.MEAL_DETAIL_KEY
+import com.example.gourmetapp.data.News
+import com.example.gourmetapp.databinding.FragmentNewsListBinding
+import com.example.gourmetapp.ui.news.NewsDetailViewModel.Companion.NEWS_DETAIL_KEY
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MealListFragment : Fragment() {
+class NewsListFragment : Fragment() {
 
-    private val viewModel: MealListViewModel by viewModels()
+    private val viewModel: NewsListViewModel by viewModels()
 
-    private lateinit var _binding: FragmentMealListBinding
-    private val binding: FragmentMealListBinding get() = _binding
+    private lateinit var _binding: FragmentNewsListBinding
+    private val binding: FragmentNewsListBinding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMealListBinding.inflate(inflater)
+        _binding = FragmentNewsListBinding.inflate(inflater)
         return binding.root
     }
 
@@ -39,37 +39,37 @@ class MealListFragment : Fragment() {
 
         val isTablet = requireContext().resources.getBoolean(R.bool.isTablet)
 
-        val callback: MealAdapter.Callback = object : MealAdapter.Callback {
-            override fun clickedMeal(meal: Meal) {
+        val callback: NewsAdapter.Callback = object : NewsAdapter.Callback {
+            override fun clickedNews(news: News) {
                 if (isTablet) {
-                    val bundle = bundleOf(MEAL_DETAIL_KEY to meal.descriptionUrl)
+                    val bundle = bundleOf(NEWS_DETAIL_KEY to news.descriptionUrl)
                     parentFragmentManager.commit {
                         setReorderingAllowed(true)
-                        add<MealDetailFragment>(R.id.fragment_detail_container, args = bundle)
+                        add<NewsDetailFragment>(R.id.fragment_detail_container, args = bundle)
                     }
                 } else {
                     findNavController().navigate(
-                        MealListFragmentDirections.actionMealListFragmentToMealDetailFragment(
-                            meal.descriptionUrl
+                        NewsListFragmentDirections.actionNewsListFragmentToNewsDetailFragment(
+                            news.descriptionUrl
                         )
                     )
                 }
             }
         }
 
-        val mealAdapter = MealAdapter(callback)
+        val newsAdapter = NewsAdapter(callback)
 
-        binding.mealRecycler.apply {
-            adapter = mealAdapter
+        binding.newsRecycler.apply {
+            adapter = newsAdapter
             setHasFixedSize(true)
         }
 
-        viewModel.meals.observe(viewLifecycleOwner) {
-            mealAdapter.submitList(it)
+        viewModel.news.observe(viewLifecycleOwner) {
+            newsAdapter.submitList(it)
         }
 
         binding.swipeRefresh.setOnRefreshListener {
-            viewModel.refreshMealList()
+            viewModel.refreshNewsList()
         }
 
         viewModel.swipeRefreshing.observe(viewLifecycleOwner) {
@@ -82,14 +82,14 @@ class MealListFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.meal_menu, menu)
+        inflater.inflate(R.menu.news_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_refresh -> {
                 binding.swipeRefresh.isRefreshing = true
-                viewModel.refreshMealList()
+                viewModel.refreshNewsList()
                 true
             }
             else -> super.onOptionsItemSelected(item)

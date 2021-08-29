@@ -9,23 +9,23 @@ import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface MealDao {
+interface NewsDao {
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  suspend fun insert(meal: Meal)
+  suspend fun insert(news: News)
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  suspend fun insertList(meals: List<Meal>)
+  suspend fun insertList(news: List<News>)
 
   @Delete
-  suspend fun delete(meal: Meal)
+  suspend fun delete(news: News)
 
   @Update
-  suspend fun update(meal: Meal)
+  suspend fun update(news: News)
 
-  @Query("SELECT * FROM meal_table ORDER BY orderId ASC")
-  fun getAscendingMeals(): Flow<List<Meal>>
+  @Query("SELECT * FROM news_table ORDER BY orderId ASC")
+  fun getAscendingNews(): Flow<List<News>>
 
-  @Query("DELETE FROM meal_table")
-  fun nukeMeals()
+  @Query("DELETE FROM news_table")
+  fun nukeNews()
 }

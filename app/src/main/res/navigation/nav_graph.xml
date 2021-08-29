@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mealListFragment">
+    app:startDestination="@id/newsListFragment">
 
     <fragment
-        android:id="@+id/mealListFragment"
-        android:name="com.example.gourmetapp.ui.meal.MealListFragment"
+        android:id="@+id/newsListFragment"
+        android:name="com.example.gourmetapp.ui.news.NewsListFragment"
         android:label="fragment_tasks"
-        tools:layout="@layout/fragment_meal_list">
+        tools:layout="@layout/fragment_news_list">
         <action
-            android:id="@+id/action_mealListFragment_to_mealDetailFragment"
-            app:destination="@id/mealDetailFragment" />
+            android:id="@+id/action_newsListFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/mealDetailFragment"
-        android:name="com.example.gourmetapp.ui.meal.MealDetailFragment"
-        android:label="MealDetailFragment">
+        android:id="@+id/newsDetailFragment"
+        android:name="com.example.gourmetapp.ui.news.NewsDetailFragment"
+        android:label="NewsDetailFragment">
         <argument
-            android:name="mealDetail"
+            android:name="newsDetail"
             android:defaultValue=""
             app:argType="string" />
     </fragment>

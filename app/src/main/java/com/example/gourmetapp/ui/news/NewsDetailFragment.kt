@@ -1,4 +1,4 @@
-package com.example.gourmetapp.ui.meal
+package com.example.gourmetapp.ui.news
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,29 +9,29 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.gourmetapp.databinding.FragmentMealDetailBinding
+import com.example.gourmetapp.databinding.FragmentNewsDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MealDetailFragment : Fragment() {
+class NewsDetailFragment : Fragment() {
 
-    private val viewModel: MealDetailViewModel by viewModels()
+    private val viewModel: NewsDetailViewModel by viewModels()
 
-    private lateinit var _binding: FragmentMealDetailBinding
-    private val binding: FragmentMealDetailBinding get() = _binding
+    private lateinit var _binding: FragmentNewsDetailBinding
+    private val binding: FragmentNewsDetailBinding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMealDetailBinding.inflate(inflater)
+        _binding = FragmentNewsDetailBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.mealDetail.observe(viewLifecycleOwner) {
+        viewModel.newsDetail.observe(viewLifecycleOwner) {
             if (it != null) {
                 setupWebView(it)
             }
@@ -39,7 +39,7 @@ class MealDetailFragment : Fragment() {
     }
 
     private fun setupWebView(url: String) {
-        binding.mealWeb.apply {
+        binding.newsWeb.apply {
 
             settings.apply {
                 javaScriptEnabled = true
@@ -54,9 +54,9 @@ class MealDetailFragment : Fragment() {
                 }
 
                 override fun onProgressChanged(view: WebView?, newProgress: Int) {
-                    binding.mealWebIndicator.progress = newProgress
+                    binding.newsWebIndicator.progress = newProgress
                     if (newProgress == 100) {
-                        binding.mealWebIndicator.visibility = View.GONE
+                        binding.newsWebIndicator.visibility = View.GONE
                     }
                 }
             }
@@ -68,6 +68,6 @@ class MealDetailFragment : Fragment() {
                 }
             }
         }
-        binding.mealWeb.loadUrl(url)
+        binding.newsWeb.loadUrl(url)
     }
 }

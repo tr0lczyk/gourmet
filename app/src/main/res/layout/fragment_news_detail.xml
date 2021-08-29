@@ -5,12 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <WebView
-        android:id="@+id/meal_web"
+        android:id="@+id/news_web"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/meal_web_indicator"
+        android:id="@+id/news_web_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

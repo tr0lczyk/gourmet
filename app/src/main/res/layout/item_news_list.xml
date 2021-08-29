@@ -9,7 +9,7 @@
     android:background="?attr/selectableItemBackground">
 
     <TextView
-        android:id="@+id/meal_title"
+        android:id="@+id/news_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -17,7 +17,7 @@
         tools:text="Title" />
 
     <TextView
-        android:id="@+id/meal_date"
+        android:id="@+id/news_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
@@ -28,15 +28,15 @@
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/double_base_padding"
         android:orientation="vertical"
-        app:constraint_referenced_ids="meal_title,meal_date"
+        app:constraint_referenced_ids="news_title,news_date"
         app:flow_horizontalAlign="start"
-        app:layout_constraintBottom_toBottomOf="@id/meal_image"
+        app:layout_constraintBottom_toBottomOf="@id/news_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/meal_image"
-        app:layout_constraintTop_toTopOf="@id/meal_image" />
+        app:layout_constraintStart_toEndOf="@id/news_image"
+        app:layout_constraintTop_toTopOf="@id/news_image" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/meal_image"
+        android:id="@+id/news_image"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -45,14 +45,14 @@
         tools:src="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/meal_description"
+        android:id="@+id/news_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAlignment="textStart"
         android:layout_marginTop="@dimen/double_base_padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/meal_image"
+        app:layout_constraintTop_toBottomOf="@+id/news_image"
         tools:text="@string/Lorem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

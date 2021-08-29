@@ -2,7 +2,7 @@ package com.example.gourmetapp.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.gourmetapp.data.MealDatabase
+import com.example.gourmetapp.data.NewsDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,12 +21,12 @@ class DatabaseModule {
   @Singleton
   fun provideDatabase(
     app: Application
-  ) = Room.databaseBuilder(app, MealDatabase::class.java, "meal_database")
+  ) = Room.databaseBuilder(app, NewsDatabase::class.java, "news_database")
     .fallbackToDestructiveMigration()
     .build()
 
   @Provides
-  fun provideMealDao(db: MealDatabase) = db.mealDao()
+  fun provideNewsDao(db: NewsDatabase) = db.newsDao()
 
   @ApplicationScope
   @Provides

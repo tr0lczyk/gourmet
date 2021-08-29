@@ -8,9 +8,9 @@ import kotlinx.parcelize.Parcelize
 import java.text.SimpleDateFormat
 import java.util.*
 
-@Entity(tableName = "meal_table")
+@Entity(tableName = "news_table")
 @Parcelize
-data class Meal(
+data class News(
         @Json(name = "description")
         val description: String,
         @Json(name = "image_url")

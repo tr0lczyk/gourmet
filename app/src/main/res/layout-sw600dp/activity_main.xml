@@ -17,7 +17,7 @@
         android:id="@+id/fragment_master_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:name="com.example.gourmetapp.ui.meal.MealListFragment"
+        android:name="com.example.gourmetapp.ui.news.NewsListFragment"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline"/>
