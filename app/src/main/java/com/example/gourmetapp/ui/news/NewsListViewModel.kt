@@ -16,7 +16,7 @@ class NewsListViewModel @Inject constructor(private val repository: NewsReposito
 
     private val job = Job()
     private val newsListScope = CoroutineScope(Dispatchers.Main + job)
-    private val newsFlow = repository.getNewsList()
+    private val newsFlow = repository.getAscendingNewsList()
     val news = newsFlow.asLiveData()
     val swipeRefreshing = MutableLiveData(true)
 

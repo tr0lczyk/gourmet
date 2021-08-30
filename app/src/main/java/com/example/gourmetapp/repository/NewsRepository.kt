@@ -32,7 +32,7 @@ class NewsRepository @Inject constructor(
         }
     }
 
-    fun getNewsList(): Flow<List<News>> {
+    fun getAscendingNewsList(): Flow<List<News>> {
         return database.newsDao().getAscendingNews()
     }
 }
