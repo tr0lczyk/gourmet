@@ -100,7 +100,3 @@ dependencies {
   //SwpieRefresh
   implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeVersion"
 }
-
-kapt {
-  correctErrorTypes true
-}
